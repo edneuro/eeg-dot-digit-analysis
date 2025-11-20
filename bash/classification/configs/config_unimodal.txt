@@ -1,0 +1,6 @@
+RSA_results = runRSA_uni_pairwise_gen('ENI_015','dots',  '/scratch/users/ethanroy/eeg_groupitizing_data/ENI_015.mat', outPath);
+RSA_results = runRSA_uni_pairwise_gen('ENI_032','dots', '/scratch/users/ethanroy/eeg_groupitizing_data/ENI_032.mat', outPath);
+RSA_results = runRSA_uni_pairwise_gen('ENI_195','dots', '/scratch/users/ethanroy/eeg_groupitizing_data/ENI_195.mat', outPath);
+RSA_results = runRSA_uni_pairwise_gen('ENI_015','digits',  '/scratch/users/ethanroy/eeg_groupitizing_data/ENI_015.mat', outPath);
+RSA_results = runRSA_uni_pairwise_gen('ENI_032','digits', '/scratch/users/ethanroy/eeg_groupitizing_data/ENI_032.mat', outPath);
+RSA_results = runRSA_uni_pairwise_gen('ENI_195','digits', '/scratch/users/ethanroy/eeg_groupitizing_data/ENI_195.mat', outPath);

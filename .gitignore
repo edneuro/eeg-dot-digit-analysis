@@ -4,6 +4,5 @@ python/classification/notebooks/.ipynb_checkpoints/
 python/classification/.ipynb_checkpoints/
 *.out
 *ENI_*.m
-*.txt
 .DS_Store
 *.sfp
