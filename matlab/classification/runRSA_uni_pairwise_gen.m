@@ -13,13 +13,14 @@ function RSA_results = runRSA_uni_pairwise_gen(subjectID, trainFormat, dataPath,
 
 
     rnd_seed = 3;
+
     load(dataPath);
 
 
     formatSpec = '%s_train_%s_uni_results.mat';
     outFile = sprintf(formatSpec,subjectID,trainFormat);
     
-    X = classData.X.xClean;
+    X = classData.X;
     
     % 1: dots 2: digits, 3: math symbol
     labels3 = classData.labels3; 
@@ -58,15 +59,14 @@ function RSA_results = runRSA_uni_pairwise_gen(subjectID, trainFormat, dataPath,
     rnd_seed = 3;
     n_trials_to_avg = 1;
     
-    RSA = MatClassRSA;    
     
     % Data preprocessing (noise normalization, shuffling, pseudo-averaging),
     % where the random seed is set to rnd_seed
-    [X_shuf_train, Y_shuf_train,rndIdx] = RSA.Preprocessing.shuffleData(X_train, labels_train,'rngType', rnd_seed);
-    [X_shufNorm_train, sigma_inv] = RSA.Preprocessing.noiseNormalization(X_shuf_train, Y_shuf_train);
-    [X_shufNormAvg_train, Y_shufAvg_train] = RSA.Preprocessing.averageTrials(X_shufNorm_train, Y_shuf_train, n_trials_to_avg, 'rngType', rnd_seed);
+    [X_shuf_train, Y_shuf_train,rndIdx] = Preprocessing.shuffleData(X_train, labels_train,'rngType', rnd_seed);
+    [X_shufNorm_train, sigma_inv] = Preprocessing.noiseNormalization(X_shuf_train, Y_shuf_train);
+    [X_shufNormAvg_train, Y_shufAvg_train] = Preprocessing.averageTrials(X_shufNorm_train, Y_shuf_train, n_trials_to_avg, 'rngType', rnd_seed);
     
-    RSA_results = RSA.Classification.crossValidatePairs(X_shufNormAvg_train, Y_shufAvg_train);
+    RSA_results = Classification.crossValidatePairs(X_shufNormAvg_train, Y_shufAvg_train);
          
     save(strcat(outPath,outFile),'RSA_results','-v7.3')
 

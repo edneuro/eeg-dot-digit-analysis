@@ -42,16 +42,14 @@ function RSA_results = runRSA_classify_answer(subjectID, dataPath, outPath)
     % this code comes from example at: https://github.com/berneezy3/MatClassRSA/blob/dev2/examples/example_v2_visualization_plotMatrix.m
     rnd_seed = 3;
     n_trials_to_avg = 1;
-    
-    RSA = MatClassRSA;    
-    
+        
     % Data preprocessing (noise normalization, shuffling, pseudo-averaging),
     % where the random seed is set to rnd_seed
-    [X_shuf_train, Y_shuf_train,rndIdx] = RSA.Preprocessing.shuffleData(X_concat_operands, sum_labels,'rngType', rnd_seed);
-    [X_shufNorm_train, sigma_inv] = RSA.Preprocessing.noiseNormalization(X_shuf_train, Y_shuf_train);
-    [X_shufNormAvg_train, Y_shufAvg_train] = RSA.Preprocessing.averageTrials(X_shufNorm_train, Y_shuf_train, n_trials_to_avg, 'rngType', rnd_seed);
+    [X_shuf_train, Y_shuf_train,rndIdx] = Preprocessing.shuffleData(X_concat_operands, sum_labels,'rngType', rnd_seed);
+    [X_shufNorm_train, sigma_inv] = Preprocessing.noiseNormalization(X_shuf_train, Y_shuf_train);
+    [X_shufNormAvg_train, Y_shufAvg_train] = Preprocessing.averageTrials(X_shufNorm_train, Y_shuf_train, n_trials_to_avg, 'rngType', rnd_seed);
     
-    RSA_results = RSA.Classification.crossValidatePairs(X_shufNormAvg_train, Y_shufAvg_train, 'nFolds', 3);
+    RSA_results = Classification.crossValidatePairs(X_shufNormAvg_train, Y_shufAvg_train, 'nFolds', 3);
          
     save(strcat(outPath,outFile),'RSA_results','-v7.3')
 
