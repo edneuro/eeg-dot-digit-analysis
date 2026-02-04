@@ -33,7 +33,7 @@ Step 2) Create Config Files<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input, on line 128<br>
 
 Step 3) Create Config.txt<br>
-  Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
+&nbsp;&nbsp;&nbsp;&nbsp;Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
 
 The data are cleaned using the SENSI short epoch preprocessing pipeline<sup>1</sup>. In the folder `/bash/preproc/configs`, there are a series of `.m` files that configure the preprocessing pipeline for each participant. 
 The paths to these files are listed in the file `/bash/preproc/configs.txt`, which you will have to update to reflect your directory structure. Once you have updated these paths, you are ready to run the preprocessing pipeline. 
