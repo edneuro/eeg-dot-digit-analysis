@@ -40,10 +40,9 @@ INFO.dirs.code = '/home/groups/brucemc/Analysis/SENSI-EEG-Preproc-SE-private/';
 INFO.configFn = sprintf('/Users/school/Desktop/DataCleaning/ENI_%s/se_cleaning_config_ENI_%s.m', subjectID);
 
 % Specific preprocessing stages - Input/output/figure directories
- INFO.dirs.raw = sprintf('/scratch/users/ethanroy/eeg_groupitizing_data/raw_data/ENI_%s', subjectID);
- INFO.dirs.cleaned = '/scratch/users/ethanroy/eeg_groupitizing_data/cleaned/';
-
- INFO.dirs.figs = '/scratch/users/ethanroy/eeg_groupitizing_data/cleaned/';
+ INFO.dirs.raw = sprintf('/scratch/users/sagon151/eeg_groupitizing_data/raw_data/ENI_%s', subjectID);
+ INFO.dirs.cleaned = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
+ INFO.dirs.figs = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
 
 %% General Parameters
 
