@@ -18,22 +18,22 @@ problem was true or false. Each problem constituted one trial, which consisted o
 
 ### Data cleaning
 
-Step 1) Edit se_cleaning_config_template.m<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Open /matlab/preproc/se_cleaning_config_template.m<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Edit Lines 43-45 with your own pathing<br>
+#### 1. Edit se_cleaning_config_template.m
+    1. Open /matlab/preproc/se_cleaning_config_template.m<br>
+    2. Edit Lines 43-45 with your own pathing<br><br>
 
-Step 2) Create Config Files<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Open Jupiter Notebook<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Open python/preproc/specify_config_files.ipynb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Edit the following with your own pathing:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_name, on line 50<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template, on line 114<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output, on line 121<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input, on line 125<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input, on line 128<br>
+#### 2. Create Config Files
+    1. Open Jupiter Notebook<br>
+    2. Open python/preproc/specify_config_files.ipynb<br>
+    3. Edit the following with your own pathing:<br>
+        1. file_name, on line 50<br>
+        2. template, on line 114<br>
+        3. output, on line 121<br>
+        4. input, on line 125<br>
+        5. input, on line 128<br><br>
 
-Step 3) Create Config.txt<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
+#### 3. Create Config.txt
+    1. Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
 
 The data are cleaned using the SENSI short epoch preprocessing pipeline<sup>1</sup>. In the folder `/bash/preproc/configs`, there are a series of `.m` files that configure the preprocessing pipeline for each participant. 
 The paths to these files are listed in the file `/bash/preproc/configs.txt`, which you will have to update to reflect your directory structure. Once you have updated these paths, you are ready to run the preprocessing pipeline. 
