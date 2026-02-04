@@ -19,7 +19,7 @@ problem was true or false. Each problem constituted one trial, which consisted o
 ### Data cleaning
 
 Step 1) Edit se_cleaning_config_template.m<br>
-  Open /matlab/preproc/se_cleaning_config_template.m<br>
+  <tab>Open /matlab/preproc/se_cleaning_config_template.m<br>
   Edit Lines 43-45 with your own pathing<br>
 
 Step 2) Create Config Files<br>
