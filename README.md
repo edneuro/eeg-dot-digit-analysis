@@ -18,9 +18,22 @@ problem was true or false. Each problem constituted one trial, which consisted o
 
 ### Data cleaning
 
-Step 1) Create Config Files
+Step 1) Edit se_cleaning_config_template.m
+  Open /matlab/preproc/se_cleaning_config_template.m
+  Edit Lines 43-45 with your own pathing
 
-Step 2) Create Config.txt
+Step 2) Create Config Files
+  Open Jupiter Notebook
+  Open python/preproc/specify_config_files.ipynb
+  Edit the following with your own pathing
+    file_name, on line 50
+    template, on line 114
+    output, on line 121
+    input, on line 125
+    input, on line 128
+
+Step 3) Create Config.txt
+  Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
 
 The data are cleaned using the SENSI short epoch preprocessing pipeline<sup>1</sup>. In the folder `/bash/preproc/configs`, there are a series of `.m` files that configure the preprocessing pipeline for each participant. 
 The paths to these files are listed in the file `/bash/preproc/configs.txt`, which you will have to update to reflect your directory structure. Once you have updated these paths, you are ready to run the preprocessing pipeline. 
