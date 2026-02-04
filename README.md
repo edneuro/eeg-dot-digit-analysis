@@ -29,7 +29,7 @@ Step 2) Create Config Files
     file_name, on line 50
     template, on line 114
     output, on line 121
-    input, on line 125
+    input, on line 125<br>
     input, on line 128
 
 Step 3) Create Config.txt
