@@ -19,18 +19,18 @@ problem was true or false. Each problem constituted one trial, which consisted o
 ### Data cleaning
 
 #### 1. Edit se_cleaning_config_template.m
-    1. Open /matlab/preproc/se_cleaning_config_template.m<br>
-    2. Edit Lines 43-45 with your own pathing<br><br>
+    1. Open /matlab/preproc/se_cleaning_config_template.m
+    2. Edit Lines 43-45 with your own pathing
 
 #### 2. Create Config Files
-    1. Open Jupiter Notebook<br>
-    2. Open python/preproc/specify_config_files.ipynb<br>
-    3. Edit the following with your own pathing:<br>
-        1. file_name, on line 50<br>
-        2. template, on line 114<br>
-        3. output, on line 121<br>
-        4. input, on line 125<br>
-        5. input, on line 128<br><br>
+    1. Open Jupiter Notebook
+    2. Open python/preproc/specify_config_files.ipynb
+    3. Edit the following with your own pathing:
+        - file_name, on line 50
+        - template, on line 114
+        - output, on line 121
+        - input, on line 125
+        - input, on line 128
 
 #### 3. Create Config.txt
     1. Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
