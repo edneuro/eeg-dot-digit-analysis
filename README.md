@@ -25,7 +25,7 @@ Step 1) Edit se_cleaning_config_template.m<br>
 Step 2) Create Config Files<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Open Jupiter Notebook<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Open python/preproc/specify_config_files.ipynb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Edit the following with your own pathing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Edit the following with your own pathing:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_name, on line 50<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template, on line 114<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output, on line 121<br>
