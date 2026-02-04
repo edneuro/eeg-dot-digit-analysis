@@ -19,6 +19,7 @@ problem was true or false. Each problem constituted one trial, which consisted o
 ### Data cleaning
 
 Step 1) Create Config Files
+
 Step 2) Create Config.txt
 
 The data are cleaned using the SENSI short epoch preprocessing pipeline<sup>1</sup>. In the folder `/bash/preproc/configs`, there are a series of `.m` files that configure the preprocessing pipeline for each participant. 
