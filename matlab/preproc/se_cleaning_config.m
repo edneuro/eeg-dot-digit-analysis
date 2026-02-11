@@ -33,16 +33,16 @@ fprintf('Pipeline Configuration\n')
 
 % High level
 % Path of this Repo
-INFO.dirs.code = 'C:\Users\amilcar\Documents\Stanford\Repos\SENSI-EEG-Preproc-SE-private';
+INFO.dirs.code = '/home/groups/brucemc/Analysis/SENSI-EEG-Preproc-SE-private/';
+
 % The name of this file (Change with your config version, E.g se_config_BK.m)
-INFO.configFn = 'se_cleaning_config.m';
+%INFO.configFn = 'se_cleaning_config.m';
+INFO.configFn = sprintf('/Users/school/Desktop/DataCleaning/ENI_%s/se_cleaning_config_ENI_%s.m', subjectID); % Used for Bash Shell Scripting
 
 % Specific preprocessing stages - Input/output/figure directories
-% INFO.dirs.raw = "C:\Users\amilcar\Documents\Stanford\Data\OCED";
-INFO.dirs.raw = "C:\Users\amilcar\Documents\Stanford\Dyslexia_2024\processed_data";
-INFO.dirs.cleaned = "C:\Users\amilcar\Documents\Stanford\Data\OCED\cleaned";
-% INFO.dirs.figs = "C:\Users\amilcar\Documents\Stanford\Data\OCED\PreprocFigs";
-INFO.dirs.figs = "D:\Stanford\Figures\ssvep";
+INFO.dirs.raw = sprintf('/scratch/users/sagon151/eeg_groupitizing_data/raw_data/ENI_%s', subjectID); % Used for Bash Shell Scripting
+INFO.dirs.cleaned = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
+INFO.dirs.figs = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
 
 
 %% General Parameters
@@ -78,13 +78,13 @@ INFO.anno.participantWearingMask = 'N'; % User can overwrite in each run
     % Always specify: 
     
     % 1. File Prefix
-    INFO.file_labels.Prefix = "DYS"; 
+    INFO.file_labels.Prefix = "ENI"; 
     % INFO.file_labels.Prefix = "S"; 
     
     % 2. Subjects to be analyzed (Cell array) 
     % INFO.file_labels.Subjects = {"001","003"}; 
     % INFO.file_labels.Subjects = {"2"}; 
-    INFO.file_labels.Subjects = {"006"}; % SSVEP can Only take one at a time
+    %INFO.file_labels.Subjects = {"006"}; % SSVEP can Only take one at a time
     
     % 3. Block identifier - Select Which Blocks to use
     config.Block_ID = 1;
@@ -92,13 +92,13 @@ INFO.anno.participantWearingMask = 'N'; % User can overwrite in each run
         % 3.1 Blocks to be Analyzed - Costumize your blocks
         % tmp.Block{1} = {"a1","a2","a3"};   % Blocks a1-3
         % tmp.Block{1} = {"WORD"};   % Block Word
-        tmp.Block{1} = {"WORD"};   % Block ERP
-        tmp.Block{2} = {"b1","b2"};   % Blocks b1-3
+        %tmp.Block{1} = {"WORD"};   % Block ERP
+        %tmp.Block{2} = {"b1","b2"};   % Blocks b1-3
         INFO.file_labels.Blocks = tmp.Block{config.Block_ID};
     
         % 3.2 Output filename termination
-        tmp.BlockStr{1} = "test";   
-        tmp.BlockStr{2} = "b12";
+        tmp.BlockStr{1} = INFO.file_labels.Subjects{1};  
+        %tmp.BlockStr{2} = "b12";
         INFO.file_labels.out_file = tmp.BlockStr{config.Block_ID};
     
 
@@ -129,7 +129,7 @@ INFO.study_style = tmp.study_style{tmp.study_style_id};
 %%%%%%%%%%%%%%%%%%% Custom %%%%%%%%%%%%%%%%%%%%%%%%
 % Select Custom Study
 % Always specify: turn on only for SSVEP with DIN epochs (TCPIP not in use)
-config.Custom.Fang_SSVEP = 1; % ON = 1, OFF = 0;
+config.Custom.Fang_SSVEP = 0; % ON = 1, OFF = 0;
 
 %%% SSVEP Only (Custom for Fang)
 if config.Custom.Fang_SSVEP
@@ -174,7 +174,7 @@ INFO.FILTERING.filterSpecs = [];        % Filter specs returned by fn call - lea
 
 % Resampling Frequency (Hz) - ERP and SSVEP
 % Always specify -> It can be the same as fs_0 (no resampling or downsampling)
-INFO.FILTERING.Resample = 420;  % IF ERP, fs_0/resample should be a integer    
+INFO.FILTERING.Resample = 200;  % IF ERP, fs_0/resample should be a integer    
 
 % Downsampling Factor for ERP (Ensuring DS in an ingeter)
 if INFO.study_style == "ERP"
@@ -186,17 +186,17 @@ end
 % Always specify: 
 
 % Long Epoch - Longer epoch to apply eye regression
-INFO.epoch.LStartMsec = 0; % Time bofore onset (for SSVEP, it shoulbe be = 0)
-INFO.epoch.LEndMsec = 1200; % Time after onset
+INFO.epoch.LStartMsec = -200; % Time bofore onset (for SSVEP, it shoulbe be = 0)
+INFO.epoch.LEndMsec = 1000; % Time after onset
 
 % Short Epoch - Desired Epoch Length
 % Epoch start/end for output data. Procedure below will include the
-INFO.epoch.SStartMsec = 0; % Time bofore onset (for SSVEP, it shoulbe be = 0)
-INFO.epoch.SEndMsec = 1000; % Time after onset
+INFO.epoch.SStartMsec = -150; % Time bofore onset (for SSVEP, it shoulbe be = 0)
+INFO.epoch.SEndMsec = 600; % Time after onset
 
 % Onset Trigger
 % Value that all DIN triggers will end up getting
-INFO.trigger.inDIN = 1;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
+INFO.trigger.inDIN = 3;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
 INFO.trigger.outDIN = 8888;    % Output value of DIN triggers (use value not represented in TCP set to avoid overlap)
 
 %%%%%%%%%%%%%%  Din Offset  %%%%%%%%%%%%%%% 
