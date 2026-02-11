@@ -50,7 +50,9 @@ fprintf('~ * ~ * Initiating Short Epoch Cleaning * ~ * ~\n\n')
 % Specify config filename (user must ensure that config file is on the path)
 % After creating your costume config file, replace the line below with yours
 %   E.g. se_cleaning_config_AM.m or se_cleaning_config_SSVEPstudy.m
-configFn = "se_cleaning_config.m";
+%configFn = "se_cleaning_config.m"; %OG code
+configFn = getenv('config_path'); % Used for Bash Shell Scripting on Sherlock
+addpath('/home/groups/brucemc/Analysis'); % Adds Path to Access code on Sherlock
 
 % Specify analyzer's initials
 INFO.se_cleaning_analyzer = ''; % Specify analyzer's initials (move into config)
