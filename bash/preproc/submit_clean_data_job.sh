@@ -10,7 +10,7 @@
 
 ml load matlab/R2023b 
 
-CONFIG_FILES='configs_208.txt'
+CONFIG_FILES='configs.txt'
 export config_path=$( sed "${SLURM_ARRAY_TASK_ID}q;d" ${CONFIG_FILES} )
 
 echo $config_path
