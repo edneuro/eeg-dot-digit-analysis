@@ -16,7 +16,7 @@ export config_path=$( sed "${SLURM_ARRAY_TASK_ID}q;d" ${CONFIG_FILES} )
 echo $config_path
 
 matlab -nodisplay < \
-~/eeg_groupitizing/code/matlab/preproc/runCleaning.m
+~/eeg_groupitizing/code/matlab/preproc/se_cleaning.m
 
 # use this to update the config file: ls configs/ > configs.txt
 # use this to get array length: ls configs | wc -l
