@@ -1,5 +1,5 @@
 % se_cleaning_config.m
-% -------------------------------------------------------------------------
+% ------------------------------------------------------------------------
 % By Amilcar Malave (2025-01-16)
 % Adapted from: preproc_0_config.m by Blair Kaneshiro (2024-08-07)
 
@@ -33,24 +33,25 @@ fprintf('Pipeline Configuration\n')
 
 % High level
 % Path of this Repo
-% subjectID = 'Insert subject ID';
-
-INFO.dirs.code = '/home/groups/brucemc/Analysis/SENSI-EEG-Preproc-SE-private/';
- % The name of this file (Change with your config version, E.g shortEpoch_config_BK.m)
-INFO.configFn = sprintf('/Users/school/Desktop/DataCleaning/ENI_%s/se_cleaning_config_ENI_%s.m', subjectID);
+INFO.dirs.code = 'C:\Users\amilcar\Documents\Stanford\Repos\SENSI-EEG-Preproc-SE-private';
+% The name of this file (Change with your config version, E.g se_config_BK.m)
+INFO.configFn = 'se_cleaning_config.m';
 
 % Specific preprocessing stages - Input/output/figure directories
- INFO.dirs.raw = sprintf('/scratch/users/sagon151/eeg_groupitizing_data/raw_data/ENI_%s', subjectID);
- INFO.dirs.cleaned = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
- INFO.dirs.figs = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
+% INFO.dirs.raw = "C:\Users\amilcar\Documents\Stanford\Data\OCED";
+INFO.dirs.raw = "C:\Users\amilcar\Documents\Stanford\Dyslexia_2024\processed_data";
+INFO.dirs.cleaned = "C:\Users\amilcar\Documents\Stanford\Data\OCED\cleaned";
+% INFO.dirs.figs = "C:\Users\amilcar\Documents\Stanford\Data\OCED\PreprocFigs";
+INFO.dirs.figs = "D:\Stanford\Figures\ssvep";
+
 
 %% General Parameters
 
 %%% Specify Figure Vizualization/Export/Clear 
 config.doFigs = 1; % Do Figures -> 1 = ON, 0 = OFF
 config.doFilterFig = 0; % Do filter Figs (take long) -> 1 = ON, 0 = OFF
-config.showFigs = 0; % Figure Visibility -> 1 = ON, 0 = OFF
-config.saveFigs = 1; % Export Figure -> 1 = ON, 0 = OFF
+config.showFigs = 1; % Figure Visibility -> 1 = ON, 0 = OFF
+config.saveFigs = 0; % Export Figure -> 1 = ON, 0 = OFF
 config.closeFigs = 1; % Close Figures after exporting (reduce RAM use) -> 1 = ON, 0 = OFF
 config.fig_res = 300; % figure resolution - Higher is better
 config.ePlot = []; % Channel for Plotting (default value if left empty)
@@ -77,30 +78,27 @@ INFO.anno.participantWearingMask = 'N'; % User can overwrite in each run
     % Always specify: 
     
     % 1. File Prefix
-    INFO.file_labels.Prefix = "ENI"; 
+    INFO.file_labels.Prefix = "DYS"; 
     % INFO.file_labels.Prefix = "S"; 
-
     
     % 2. Subjects to be analyzed (Cell array) 
     % INFO.file_labels.Subjects = {"001","003"}; 
-    % INFO.file_labels.Subjects = {""}; 
-
-    % INFO.file_labels.Subjects = {"006"}; % SSVEP can Only take one at a time
+    % INFO.file_labels.Subjects = {"2"}; 
+    INFO.file_labels.Subjects = {"006"}; % SSVEP can Only take one at a time
     
     % 3. Block identifier - Select Which Blocks to use
     config.Block_ID = 1;
     
         % 3.1 Blocks to be Analyzed - Costumize your blocks
-        % tmp.Block{1} = {"Block_1","Block_2","Block_3","Block_4"};   % Blocks a1-3
-        % tmp.Block{1} = {"a1"};   % Blocks a1-3
-        % tmp.Block{1} = {"ERP"};   % Block Word
-        % tmp.Block{2} = {"b1","b2"};   % Blocks b1-3
+        % tmp.Block{1} = {"a1","a2","a3"};   % Blocks a1-3
+        % tmp.Block{1} = {"WORD"};   % Block Word
+        tmp.Block{1} = {"WORD"};   % Block ERP
+        tmp.Block{2} = {"b1","b2"};   % Blocks b1-3
         INFO.file_labels.Blocks = tmp.Block{config.Block_ID};
     
         % 3.2 Output filename termination
-        % tmp.BlockStr{1} = sprintf("%s", subjectID); 
-        tmp.BlockStr{1} = INFO.file_labels.Subjects{1};
-        % tmp.BlockStr{2} = "195";
+        tmp.BlockStr{1} = "test";   
+        tmp.BlockStr{2} = "b12";
         INFO.file_labels.out_file = tmp.BlockStr{config.Block_ID};
     
 
@@ -114,24 +112,24 @@ INFO.anno.participantWearingMask = 'N'; % User can overwrite in each run
 tmp.onset_type_id = 1; % DIN = 1, OCED = 2
 tmp.onset_type = {"DIN", "Oced"}; % Onset Types (dont touch this line)
 
+%%% Study Style - ERP or SSVEP
+% Always specify: 
+tmp.study_style_id = 2; % ERP = 1, SSVEP = 2
+tmp.study_style = {"ERP", "SSVEP"}; % Study Style (dont touch this line)
+INFO.study_style = tmp.study_style{tmp.study_style_id};
+
 %%% ERP Conditions / Categories
     % When to specify: Only for ERP
     % Desired TCPIP table Conditions / Categories 
-    tmp.TCPIP_conditions = {'STIM'}; % TCPIP Table Epoch Conditions
+    tmp.TCPIP_conditions = {'DINP','DINW'}; % TCPIP Table Epoch Conditions
 
     % OCED labels for input's "categoryLabels"
-    tmp.OCED_conditions = {'STIM'}; % OCED Categories
-
-%%% Study Style - ERP or SSVEP
-% Always specify: 
-tmp.study_style_id = 1; % ERP = 1, SSVEP = 2
-tmp.study_style = {"ERP", "SSVEP"}; % Study Style (dont touch this line)
-INFO.study_style = tmp.study_style{tmp.study_style_id};
+    tmp.OCED_conditions = {'HB', 'HF', 'AB', 'AF', 'FV', 'IO'}; % OCED Categories
 
 %%%%%%%%%%%%%%%%%%% Custom %%%%%%%%%%%%%%%%%%%%%%%%
 % Select Custom Study
 % Always specify: turn on only for SSVEP with DIN epochs (TCPIP not in use)
-config.Custom.Fang_SSVEP = 0; % ON = 1, OFF = 0;
+config.Custom.Fang_SSVEP = 1; % ON = 1, OFF = 0;
 
 %%% SSVEP Only (Custom for Fang)
 if config.Custom.Fang_SSVEP
@@ -141,9 +139,9 @@ if config.Custom.Fang_SSVEP
     INFO.onsets.nTrials = 10; % Number of Trials
     INFO.onsets.epochs_keep = [2 3 4 5 6 7 8 9 10 11]; % Indices of Epochs to keep
     INFO.onsets.trials_keep = [2 3 4 5 6 7 8 9]; % Which trials to keep
-    config.plotFFT.window = [0 50]; % Window for FFT plots
+    config.plotFFT.window = [0 50]; % Window for FFT plots in Hz
     config.plotFFT.plotTrial = 5; % Which Trial subset for FFT plots
-    config.plotFFT.desiredFreqs = [1 3]; % Desired Freqz to Plot (Reference lines)
+    config.plotFFT.desiredFreqs = [1 3]; % Desired Freqz to Plot in Hz (Reference lines)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -176,7 +174,7 @@ INFO.FILTERING.filterSpecs = [];        % Filter specs returned by fn call - lea
 
 % Resampling Frequency (Hz) - ERP and SSVEP
 % Always specify -> It can be the same as fs_0 (no resampling or downsampling)
-INFO.FILTERING.Resample = 200;  % IF ERP, fs_0/resample should be a integer    
+INFO.FILTERING.Resample = 420;  % IF ERP, fs_0/resample should be a integer    
 
 % Downsampling Factor for ERP (Ensuring DS in an ingeter)
 if INFO.study_style == "ERP"
@@ -188,29 +186,25 @@ end
 % Always specify: 
 
 % Long Epoch - Longer epoch to apply eye regression
-INFO.epoch.LStartMsec = -200; % Time bofore onset (for SSVEP, it shoulbe be = 0)
-INFO.epoch.LEndMsec = 1000; % Time after onset
+INFO.epoch.LStartMsec = 0; % Time bofore onset (for SSVEP, it shoulbe be = 0)
+INFO.epoch.LEndMsec = 1200; % Time after onset
 
 % Short Epoch - Desired Epoch Length
 % Epoch start/end for output data. Procedure below will include the
-INFO.epoch.SStartMsec = -150; % Time bofore onset (for SSVEP, it shoulbe be = 0)
-INFO.epoch.SEndMsec = 600; % Time after onset
+INFO.epoch.SStartMsec = 0; % Time bofore onset (for SSVEP, it shoulbe be = 0)
+INFO.epoch.SEndMsec = 1000; % Time after onset
 
 % Onset Trigger
 % Value that all DIN triggers will end up getting
-INFO.trigger.inDIN = 3;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
+INFO.trigger.inDIN = 1;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
 INFO.trigger.outDIN = 8888;    % Output value of DIN triggers (use value not represented in TCP set to avoid overlap)
 
 %%%%%%%%%%%%%%  Din Offset  %%%%%%%%%%%%%%% 
 % Can modify if Necessary (e.g. the offset does not match)
-% Can modify if Necessary (e.g. the offset does not match)
 if INFO.trigger.inDIN == 1           % Photodiode
     INFO.onset.dinSampOffset = 0;    % SENSI: Typically 0 samples (0 msec) 
 elseif INFO.trigger.inDIN == 2       % Audio
-    INFO.onset.dinSampOffset = 1000; % SENSI: Typically 1000 samples (1000 msec)
-elseif INFO.trigger.inDIN == 3
-    INFO.onset.dinSampOffset = 0;    % SENSI: Typically 1000 samples (1000 msec) 
-    disp('DIN3 Onsets - Visual');
+    INFO.onset.dinSampOffset = 1000; % SENSI: Typically 1000 samples (1000 msec) 
 end
 
 
@@ -236,7 +230,7 @@ config.useElectrodes = 1:124; % Channels to Keep
 %% Bad Channel Info 
 % Always specify: 
 
-% Perform Bad Channel Fix?
+% Perform Bad Channel Fix? This test each Channel per File loaded
 config.fixBadChs = 1; % ON = 1, OFF = 0;
 
 % General Bad Channel Fix
@@ -276,8 +270,7 @@ INFO.Thresh.recUV = 100; % Turn Samples > this into NaNs
 
 %%%%%%%%%%%%%%%%% Exclude and/or Fix Bad Epochs/Samples %%%%%%%%%%%%%%%%%%%
 % Exclude Bad Epochs
-config.exclude_bad_epochs = 0; % ON = 1, OFF = 0;
-config.label_bad_epochs = 1;
+config.exclude_bad_epochs = 1; % ON = 1, OFF = 0;
 
 % Exclude based on the % of NaNs
 INFO.Thresh.pctNaN = 10; % More than this percentage of NaNs per epoch
@@ -449,4 +442,3 @@ tmpfs_RS = INFO.FILTERING.Resample;
 % INFO.ICA.LowReject = []; % Leave empty when initializing this file
 % INFO.ICA.EkgSrc = []; % Leave empty when initializing this file
 % INFO.ICA.RmSrc = []; % Leave empty when initializing this file
-
