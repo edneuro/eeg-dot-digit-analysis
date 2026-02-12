@@ -114,7 +114,7 @@ tmp.onset_type = {"DIN", "Oced"}; % Onset Types (dont touch this line)
 
 %%% Study Style - ERP or SSVEP
 % Always specify: 
-tmp.study_style_id = 2; % ERP = 1, SSVEP = 2
+tmp.study_style_id = 1; % ERP = 1, SSVEP = 2
 tmp.study_style = {"ERP", "SSVEP"}; % Study Style (dont touch this line)
 INFO.study_style = tmp.study_style{tmp.study_style_id};
 
