@@ -196,12 +196,12 @@ INFO.epoch.SEndMsec = 600; % Time after onset
 
 % Onset Trigger
 % Value that all DIN triggers will end up getting
-INFO.trigger.inDIN = 1;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
+INFO.trigger.inDIN = 3;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
 INFO.trigger.outDIN = 8888;    % Output value of DIN triggers (use value not represented in TCP set to avoid overlap)
 
 %%%%%%%%%%%%%%  Din Offset  %%%%%%%%%%%%%%% 
 % Can modify if Necessary (e.g. the offset does not match)
-if INFO.trigger.inDIN == 1           % Photodiode
+if INFO.trigger.inDIN == 3           % Photodiode
     INFO.onset.dinSampOffset = 0;    % SENSI: Typically 0 samples (0 msec) 
 elseif INFO.trigger.inDIN == 2       % Audio
     INFO.onset.dinSampOffset = 1000; % SENSI: Typically 1000 samples (1000 msec) 
