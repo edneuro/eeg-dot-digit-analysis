@@ -121,7 +121,7 @@ INFO.study_style = tmp.study_style{tmp.study_style_id};
 %%% ERP Conditions / Categories
     % When to specify: Only for ERP
     % Desired TCPIP table Conditions / Categories 
-    tmp.TCPIP_conditions = {'DINP','DINW'}; % TCPIP Table Epoch Conditions
+    tmp.TCPIP_conditions = {'STIM','RESP'}; % TCPIP Table Epoch Conditions
 
     % OCED labels for input's "categoryLabels"
     tmp.OCED_conditions = {'HB', 'HF', 'AB', 'AF', 'FV', 'IO'}; % OCED Categories
