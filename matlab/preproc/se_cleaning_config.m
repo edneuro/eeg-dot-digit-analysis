@@ -196,7 +196,7 @@ INFO.epoch.SEndMsec = 600; % Time after onset
 
 % Onset Trigger
 % Value that all DIN triggers will end up getting
-INFO.trigger.inDIN = 3;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
+INFO.trigger.inDIN = 1;        % Expected value of input DIN triggers (0=no Din, 1=photodiode, 2=audio click)
 INFO.trigger.outDIN = 8888;    % Output value of DIN triggers (use value not represented in TCP set to avoid overlap)
 
 %%%%%%%%%%%%%%  Din Offset  %%%%%%%%%%%%%%% 
