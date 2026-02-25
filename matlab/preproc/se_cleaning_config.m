@@ -41,8 +41,8 @@ INFO.configFn = sprintf('/Users/school/Desktop/DataCleaning/ENI_%s/se_cleaning_c
 
 % Specific preprocessing stages - Input/output/figure directories
 INFO.dirs.raw = sprintf('/scratch/users/sagon151/eeg_groupitizing_data/raw_data/ENI_%s', subjectID); % Used for Bash Shell Scripting
-INFO.dirs.cleaned = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
-INFO.dirs.figs = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
+INFO.dirs.cleaned = "/scratch/users/sagon151/eeg_groupitizing_data/cleaned/"; % Must be in double quotes
+INFO.dirs.figs = "/scratch/users/sagon151/eeg_groupitizing_data/cleaned/";
 
 
 %% General Parameters
@@ -51,7 +51,7 @@ INFO.dirs.figs = '/scratch/users/sagon151/eeg_groupitizing_data/cleaned/';
 config.doFigs = 1; % Do Figures -> 1 = ON, 0 = OFF
 config.doFilterFig = 0; % Do filter Figs (take long) -> 1 = ON, 0 = OFF
 config.showFigs = 1; % Figure Visibility -> 1 = ON, 0 = OFF
-config.saveFigs = 0; % Export Figure -> 1 = ON, 0 = OFF
+config.saveFigs = 1; % Export Figure -> 1 = ON, 0 = OFF
 config.closeFigs = 1; % Close Figures after exporting (reduce RAM use) -> 1 = ON, 0 = OFF
 config.fig_res = 300; % figure resolution - Higher is better
 config.ePlot = []; % Channel for Plotting (default value if left empty)
