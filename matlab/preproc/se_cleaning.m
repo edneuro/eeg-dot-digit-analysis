@@ -105,7 +105,8 @@ end
 
 % Output File Tag
 if isscalar(INFO.file_labels.Subjects) % If only Onse subject -> outputs will contain subject number
-    config.subStrOut = INFO.file_labels.Prefix + INFO.file_labels.Subjects{1} + "_" + INFO.file_labels.out_file;
+    %config.subStrOut = INFO.file_labels.Prefix + INFO.file_labels.Subjects{1} + "_" + INFO.file_labels.out_file;
+    config.subStrOut = INFO.file_labels.Prefix + "_" + INFO.file_labels.out_file;
 else % If multiple subject -> Output name do not contain subject numbers
     config.subStrOut = INFO.file_labels.Prefix + "_" + INFO.file_labels.out_file;
 end
