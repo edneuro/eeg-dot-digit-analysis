@@ -41,9 +41,13 @@ INFO.configFn = sprintf('/Users/school/Desktop/DataCleaning/ENI_%s/se_cleaning_c
 
 % Specific preprocessing stages - Input/output/figure directories
 INFO.dirs.raw = sprintf('/scratch/users/sagon151/eeg_groupitizing_data/raw_data/ENI_%s', subjectID); % Used for Bash Shell Scripting
-INFO.dirs.cleaned = "/scratch/users/sagon151/eeg_groupitizing_data/cleaned/"; % Must be in double quotes
-INFO.dirs.figs = "/scratch/users/sagon151/eeg_groupitizing_data/cleaned/";
+INFO.dirs.cleaned = "/home/users/sagon151/eeg-dot-digit-analysis/output/"; %Needs to be double quotes
+INFO.dirs.figs = "/home/users/sagon151/eeg-dot-digit-analysis/output/figs";
 
+% If directory does not exist then create it
+if ~exist(INFO.dirs.figs,'dir')
+    mkdir(INFO.dirs.figs)
+end
 
 %% General Parameters
 
