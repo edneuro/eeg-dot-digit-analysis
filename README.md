@@ -31,10 +31,23 @@ problem was true or false. Each problem constituted one trial, which consisted o
         - output, on line 121
         - input, on line 125
         - input, on line 128
+    4. Run specify_config_files script
+    5. Should output a config file for every participant you specified in the script in the 2nd cell
 
 #### 3. Create Config.txt
     1. Create a .txt file in /bash/preproc/ containing all the paths to the config files you made from step 2
     2. Must be stored in same location as submit_clean_data.job.sh
+
+#### 4. Run Processing Script
+    1. Edit submit_clean_data_job.sh
+        - line 9, number of participants to run
+        - line 19, path to se_cleaning.m script
+    2. Run cleaning script
+        - sbatch submit_clean_data_job.sh
+        - Run in terminal 
+    3. Output
+        - Should output figures and .mat files in the specified output directory
+        - Will output .out Log files into directory script was ran. Review these for any issues or errors. 
 
 The data are cleaned using the SENSI short epoch preprocessing pipeline<sup>1</sup>. In the folder `/bash/preproc/configs`, there are a series of `.m` files that configure the preprocessing pipeline for each participant. 
 The paths to these files are listed in the file `/bash/preproc/configs.txt`, which you will have to update to reflect your directory structure. Once you have updated these paths, you are ready to run the preprocessing pipeline. 
